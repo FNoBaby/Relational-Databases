@@ -27,7 +27,30 @@ WHERE salary > 15000
 --Retrieve a unique list of employee names
 SELECT DISTINCT first_name FROM employees
 
+--Reteive a unique list of salary
+SELECT DISTINCT salary FROM employees
 
+-- Expressions
+-- Calculate a 10% bonus on salary for each employee
+SELECT first_name , last_name , salary, 0.1 * salary AS Bonus FROM employees
 
+-- Calculate total salary including bonus
+SELECT first_name , last_name , salary, salary + ( 0.1 * salary ) 'Salary with Bonus' FROM employees
 
+-- Calculate how long every employee has been working with the company
+SELECT first_name, last_name, hire_date , DATEDIFF(YEAR, hire_date, GETDATE()) 'Years at Company' FROM employees
 
+--Split the List of employees in two , those who do not earn a commission and those who do
+SELECT * FROM employees
+WHERE commission_pct IS NULL
+
+SELECT * FROM employees
+WHERE commission_pct IS NOT NULL
+
+-- Retrieve a list of unique job ids that receive a commission
+SELECT DISTINCT job_id FROM employees
+WHERE commission_pct IS NOT NULL
+
+--Concatination
+-- Retrieve the first name, last name and full name of employees
+SELECT first_name, last_name, first_Name + ' ' + last_name 'Full Name' FROM employees
