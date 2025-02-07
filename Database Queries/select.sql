@@ -24,7 +24,8 @@ WHERE salary > 15000
 SELECT first_name FirstName, last_name LastName, salary Salary FROM employees
 WHERE salary > 15000
 
---
+--Retrieve a unique list of employee names
+SELECT DISTINCT first_name FROM employees
 
 
 
