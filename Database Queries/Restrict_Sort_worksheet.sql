@@ -42,4 +42,48 @@ WHERE manager_id IS NULL;
 
 --11
 SELECT last_name AS 'Employee Surname' , salary AS 'Salary' , commission_pct AS 'Commission %' FROM employees
-WHERE commission_pct IS NOT NULL
+WHERE commission_pct IS NOT NULL;
+
+--12
+SELECT employee_id , last_name , salary , department_id FROM employees
+WHERE manager_id IN (101 , 103 , 107)
+ORDER BY manager_id DESC;
+
+--13
+SELECT DISTINCT job_id FROM employees
+WHERE job_id LIKE '%CLERK';
+
+--14
+SELECT last_name , first_name FROM employees
+WHERE last_name LIKE '__a%'
+
+--15
+SELECT last_name , first_name FROM employees
+WHERE last_name  LIKE '%a%' AND last_name LIKE '%e%'
+ORDER BY last_name;
+
+--16
+SELECT first_name FROM employees
+WHERE first_name LIKE '[LD]e%';
+
+--17
+SELECT last_name + ' works as ' + job_id AS INFO FROM employees
+WHERE job_id LIKE '%[TR]';
+
+--18
+SELECT last_name , job_id , salary FROM employees
+WHERE job_id LIKE 'ST%' 
+AND salary NOT IN (2500 , 3500 , 7000);
+
+--19
+SELECT phone_number FROM employees
+WHERE phone_number LIKE '[56][01]%[456]';
+
+--20
+SELECT first_name FROM employees
+WHERE first_name LIKE '___[^N]' AND LEN(first_name) = 4;
+
+--21
+SELECT last_name , salary , commission_pct FROM employees
+WHERE commission_pct = 0.2
+ORDER BY last_name;
